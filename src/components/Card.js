@@ -31,10 +31,10 @@ const Title = styled.h2`
 `;
 
 
-export default function Card(){
+export default function Card({ title, url }, index) {
     return(
-        <Card >
-            <Image>{image}
+        <Card key={index}>
+            <Image src={url}>
             </Image>
             <Title>{title}</Title>
         </Card>
