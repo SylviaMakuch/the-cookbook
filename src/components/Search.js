@@ -20,6 +20,7 @@ const ForkSpoonImg = styled.img`
   margin: 50px;
 `;
 
+
 export default function Search() {
   const [isSearched, isSetSearched] = useState("");
 
@@ -38,7 +39,7 @@ export default function Search() {
       <form onSubmit={submitHandler}>
         <input
           type="text"
-          style={{ padding: "18px", borderRadius: "25px" }}
+          style={{ padding: "18px", borderRadius: "25px" , margin: "10px"}}
           onInput={(e) => isSetSearched(e.target.value)}
         ></input>
         <button type="submit">
