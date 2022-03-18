@@ -1,4 +1,6 @@
-const Card = styled.div`
+import styled from "styled-components";
+
+const Cards = styled.div`
   background-image: linear-gradient(to bottom, #ff000000 , #000000e0);
   height: 480px;
   width: 350px;
@@ -33,10 +35,10 @@ const Title = styled.h2`
 
 export default function Card({ title, url }, index) {
     return(
-        <Card key={index}>
+        <Cards key={index}>
             <Image src={url}>
             </Image>
             <Title>{title}</Title>
-        </Card>
+        </Cards>
     )
 }
