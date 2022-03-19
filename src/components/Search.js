@@ -18,7 +18,7 @@ const PageContainer = styled.div`
 `;
 
 const ForkSpoonImg = styled.img`
-  width: 70%;
+  width: 350px;
   margin: 50px;
 `;
 
@@ -34,30 +34,29 @@ export default function Search() {
     const res = await axios.get(
       `https://www.themealdb.com/api/json/v1/1/filter.php?i=${isSearched}`
     );
-    console.log(res.data.meals)
+    setMeal(res.data.meals)
   };
 
-  const fetchMeals = async (e) => {
-    fetch(
-      "https://www.themealdb.com/api/json/v1/1/filter.php?i=$`{isSearched}`"
-    )
-      .then((result) => result.json())
-      .then(
-        (result) => {
-          console.log(result);
-          setIsLoaded(true);
-          setMeal(result.data.meals);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-          console.log("error", error);
-        }
-      );
-  };
+  // const fetchMeals = async (e) => {
+  //   fetch(
+  //     `https://www.themealdb.com/api/json/v1/1/filter.php?i=${isSearched}`
+  //   )
+  //     .then((result) => result.json())
+  //     .then(
+  //       (result) => {
+  //         console.log(result);
+  //         setIsLoaded(true);
+  //         setMeal(result.data.meals);
+  //       },
+  //       (error) => {
+  //         setIsLoaded(true);
+  //         setError(error);
+  //         console.log("error", error);
+  //       }
+  //     );
+  // };
   useEffect(() => {
-    fetchMeals();
-  }, []);
+  }, [meal]);
 
   if (error) {
     return <div>Error</div>;
@@ -77,7 +76,7 @@ export default function Search() {
             style={{ padding: "18px", borderRadius: "25px", margin: "10px" }}
             onInput={(e) => setSearched(e.target.value)}
           ></input>
-          <button type="submit">
+          <button type="submit" >
             <SearchIcon />
           </button>
         </form>
