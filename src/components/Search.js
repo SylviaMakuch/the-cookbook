@@ -25,10 +25,11 @@ const ForkSpoonImg = styled.img`
 const CardContainter = styled.div`
   display: flex;
   display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-content: flex-start;
-    max-width: 1600px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: flex-start;
+  max-width: 1600px;
+  justify-content: center;
 `;
 
 export default function Search() {
@@ -62,8 +63,7 @@ export default function Search() {
         </button>
       </form>
       <CardContainter>
-
-    {meals.map(meals => console.log(meals.strMealThumb )) }
+        {meals.map((meals) => console.log(meals.strMealThumb))}
 
         {/* {meals.map((meals) => {
           const { idMeal, strMeal, strMealThumb } = meal;
@@ -71,7 +71,7 @@ export default function Search() {
         })} */}
 
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
-          return <Cards key={index} title={strMeal} url={strMealThumb}/>;
+          return <Cards key={index} title={strMeal} url={strMealThumb} />;
         })}
       </CardContainter>
     </PageContainer>
