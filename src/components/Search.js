@@ -35,8 +35,6 @@ const CardContainter = styled.div`
 export default function Search() {
   const [isSearched, setSearched] = useState("");
   const [meals, setMeals] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(null);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -45,6 +43,7 @@ export default function Search() {
       `https://www.themealdb.com/api/json/v1/1/filter.php?i=${isSearched}`
     );
     setMeals(res.data.meals);
+    console.log(res.data.meals)
   };
 
   useEffect(() => {}, [meals]);
@@ -63,12 +62,7 @@ export default function Search() {
         </button>
       </form>
       <CardContainter>
-        {meals.map((meals) => console.log(meals.strMealThumb))}
 
-        {/* {meals.map((meals) => {
-          const { idMeal, strMeal, strMealThumb } = meal;
-          // use variables here and do stuff
-        })} */}
 
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
           return <Cards key={index} title={strMeal} url={strMealThumb} />;

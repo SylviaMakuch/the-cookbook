@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Categories from "./components/Categories.js";
 import Search from "./components/Search.js";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+
 const PageContainer = styled.div`
   width: 100%;
   display: flex;
