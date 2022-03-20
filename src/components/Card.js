@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Cards = styled.div`
-  background-image: linear-gradient(to bottom, #ff000000 , #000000e0);
+  /* background-image: linear-gradient(to bottom, #ff000000 , #000000e0); */
   height: 480px;
   width: 350px;
   border-radius: 25px;

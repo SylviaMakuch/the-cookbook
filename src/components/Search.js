@@ -22,70 +22,58 @@ const ForkSpoonImg = styled.img`
   margin: 50px;
 `;
 
+const CardContainter = styled.div`
+  display: flex;
+  display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    max-width: 1600px;
+`;
+
 export default function Search() {
   const [isSearched, setSearched] = useState("");
-  const [meal, setMeal] = useState([]);
+  const [meals, setMeals] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    // console.log(isSearched);
+    console.log(isSearched);
     const res = await axios.get(
       `https://www.themealdb.com/api/json/v1/1/filter.php?i=${isSearched}`
     );
-    setMeal(res.data.meals)
+    setMeals(res.data.meals);
   };
 
-  // const fetchMeals = async (e) => {
-  //   fetch(
-  //     `https://www.themealdb.com/api/json/v1/1/filter.php?i=${isSearched}`
-  //   )
-  //     .then((result) => result.json())
-  //     .then(
-  //       (result) => {
-  //         console.log(result);
-  //         setIsLoaded(true);
-  //         setMeal(result.data.meals);
-  //       },
-  //       (error) => {
-  //         setIsLoaded(true);
-  //         setError(error);
-  //         console.log("error", error);
-  //       }
-  //     );
-  // };
-  useEffect(() => {
-  }, [meal]);
+  useEffect(() => {}, [meals]);
 
-  if (error) {
-    return <div>Error</div>;
-  } else if (!isLoaded) {
-    return (
-      <div>
-        <img src={loading} alt="Loading..." />
-      </div>
-    );
-  } else {
-    return (
-      <PageContainer>
-        <ForkSpoonImg src={forkspoon} />
-        <form onSubmit={submitHandler}>
-          <input
-            type="text"
-            style={{ padding: "18px", borderRadius: "25px", margin: "10px" }}
-            onInput={(e) => setSearched(e.target.value)}
-          ></input>
-          <button type="submit" >
-            <SearchIcon />
-          </button>
-        </form>
-        {meal.map(({image, title }, index) => {
-          return (
-            <Cards key={index} strMealThumb={image} strMeal={title} />
-          );
+  return (
+    <PageContainer>
+      <ForkSpoonImg src={forkspoon} />
+      <form onSubmit={submitHandler}>
+        <input
+          type="text"
+          style={{ padding: "18px", borderRadius: "25px", margin: "10px" }}
+          onInput={(e) => setSearched(e.target.value)}
+        ></input>
+        <button type="submit">
+          <SearchIcon />
+        </button>
+      </form>
+      <CardContainter>
+
+    {meals.map(meals => console.log(meals.strMealThumb )) }
+
+        {/* {meals.map((meals) => {
+          const { idMeal, strMeal, strMealThumb } = meal;
+          // use variables here and do stuff
+        })} */}
+
+        {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
+          return <Cards key={index} title={strMeal} url={strMealThumb}/>;
         })}
-      </PageContainer>
-    );
-  }
+      </CardContainter>
+    </PageContainer>
+  );
 }
