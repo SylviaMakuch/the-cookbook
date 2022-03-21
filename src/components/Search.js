@@ -36,6 +36,11 @@ const CardContainter = styled.div`
   justify-content: center;
 `;
 
+const Button = styled.button`
+  background-color: #ffffff00;
+  border: none;
+`;
+
 export default function Search() {
   const [isSearched, setSearched] = useState("");
   const [meals, setMeals] = useState([]);
@@ -61,16 +66,16 @@ export default function Search() {
           style={{ padding: "18px", borderRadius: "25px", margin: "10px" }}
           onInput={(e) => setSearched(e.target.value)}
         ></input>
-        <button type="submit">
+        <Button type="submit">
           <SearchIcon />
-        </button>
+        </Button>
       </form>
       <CardContainter>
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
           return (
             <Tag
               href={`www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`}
-              key={index} 
+              key={index}
             >
               <Cards key={index} title={strMeal} url={strMealThumb} />
             </Tag>
