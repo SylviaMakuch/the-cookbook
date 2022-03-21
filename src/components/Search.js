@@ -39,6 +39,7 @@ const CardContainter = styled.div`
 const Button = styled.button`
   background-color: #ffffff00;
   border: none;
+  cursor: pointer;
 `;
 
 export default function Search() {
