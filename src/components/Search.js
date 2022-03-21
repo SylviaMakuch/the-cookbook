@@ -5,7 +5,6 @@ import axios from "axios";
 import forkspoon from "./../media/forkspoon.svg";
 import styled from "styled-components";
 import Cards from "./Card.js";
-import loading from "./../media/loading.svg";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -20,6 +19,11 @@ const PageContainer = styled.div`
 const ForkSpoonImg = styled.img`
   width: 350px;
   margin: 50px;
+`;
+
+const Tag = styled.a`
+  text-decoration: none;
+  text-transform: uppercase;
 `;
 
 const CardContainter = styled.div`
@@ -43,7 +47,7 @@ export default function Search() {
       `https://www.themealdb.com/api/json/v1/1/filter.php?i=${isSearched}`
     );
     setMeals(res.data.meals);
-    console.log(res.data.meals)
+    console.log(res.data.meals);
   };
 
   useEffect(() => {}, [meals]);
@@ -63,9 +67,14 @@ export default function Search() {
       </form>
       <CardContainter>
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
-          return <a href={`www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`}>
-          <Cards key={index} title={strMeal} url={strMealThumb} />
-          </a>;
+          return (
+            <Tag
+              href={`www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`}
+              key={index} 
+            >
+              <Cards key={index} title={strMeal} url={strMealThumb} />
+            </Tag>
+          );
         })}
       </CardContainter>
     </PageContainer>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Cards = styled.div`
+  background-image: linear-gradient(to top, #ff000000, #ff000000, #f9e8e894);
   height: 480px;
   width: 350px;
   border-radius: 25px;
@@ -10,6 +11,7 @@ const Cards = styled.div`
   justify-content: space-between;
   &:hover {
     transform: translateY(-10px);
+    background-image: linear-gradient(to bottom, #ff000000, #000000e0);
   }
 `;
 
@@ -22,12 +24,16 @@ const Image = styled.img`
 `;
 
 const Title = styled.h2`
-  font-family: "Raleway", sans-serif;
-  color: white;
+  font-family: "Abril Fatface";
+  color: black;
   text-align: center;
-  text-shadow: 2px 2px black;
+  text-transform: uppercase
+  text-align: center;
   font-size: 25px;
   letter-spacing: 0.8px;
+  &:hover {
+    color: red;
+  }
 `;
 
 export default function Card({ title, url }, index) {
