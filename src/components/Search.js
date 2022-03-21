@@ -40,6 +40,8 @@ const Button = styled.button`
   background-color: #ffffff00;
   border: none;
   cursor: pointer;
+  position: relative;
+  top: 4px;
 `;
 
 export default function Search() {
