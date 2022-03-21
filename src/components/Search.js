@@ -14,11 +14,12 @@ const PageContainer = styled.div`
   align-content: center;
   flex-wrap: wrap;
   flex-direction: column;
+  margin: 0;
 `;
 
 const ForkSpoonImg = styled.img`
   width: 350px;
-  margin: 50px;
+  margin: 20px;
 `;
 
 const Tag = styled.a`
@@ -43,6 +44,11 @@ const Button = styled.button`
   position: relative;
   top: 4px;
 `;
+const Input = styled.input`
+  padding: 18px;
+  border-radius: 25px;
+  margin: 10px;
+`;
 
 export default function Search() {
   const [isSearched, setSearched] = useState("");
@@ -64,11 +70,7 @@ export default function Search() {
     <PageContainer>
       <ForkSpoonImg src={forkspoon} />
       <form onSubmit={submitHandler}>
-        <input
-          type="text"
-          style={{ padding: "18px", borderRadius: "25px", margin: "10px" }}
-          onInput={(e) => setSearched(e.target.value)}
-        ></input>
+        <Input type="text" onInput={(e) => setSearched(e.target.value)}></Input>
         <Button type="submit">
           <SearchIcon />
         </Button>
