@@ -62,10 +62,10 @@ export default function Search() {
         </button>
       </form>
       <CardContainter>
-
-
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
-          return <Cards key={index} title={strMeal} url={strMealThumb} />;
+          return <a href={`www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`}>
+          <Cards key={index} title={strMeal} url={strMealThumb} />
+          </a>;
         })}
       </CardContainter>
     </PageContainer>
