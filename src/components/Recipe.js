@@ -42,6 +42,7 @@ const RecipeBox = styled.div`
 `;
 
 export default function Recipe() {
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i={52934}`
   return (
     <PageContainer>
       <Title></Title>

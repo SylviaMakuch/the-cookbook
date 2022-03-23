@@ -5,7 +5,7 @@ import axios from "axios";
 import forkspoon from "./../media/forkspoon.svg";
 import styled from "styled-components";
 import Cards from "./Card.js";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -55,17 +55,15 @@ const Input = styled.input`
 export default function Search() {
   const [isSearched, setSearched] = useState("");
   const [meals, setMeals] = useState([]);
-  const [isId, setId] = useState ("");
+  const [isId, setId] = useState("");
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(isSearched);
+    // console.log(isSearched);
     const res = await axios.get(
       `https://www.themealdb.com/api/json/v1/1/filter.php?i=${isSearched}`
     );
     setMeals(res.data.meals);
-    console.log(res.data.meals.idMeal);
-    console.log(res.data.meals[1].strMeal)
   };
   useEffect(() => {}, [meals]);
 
