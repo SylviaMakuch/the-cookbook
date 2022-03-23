@@ -48,6 +48,7 @@ const Input = styled.input`
   padding: 18px;
   border-radius: 25px;
   margin: 10px;
+  width: 300px;
 `;
 
 export default function Search() {
@@ -62,14 +63,22 @@ export default function Search() {
     );
     setMeals(res.data.meals);
     console.log(res.data.meals);
+    
   };
-
   useEffect(() => {}, [meals]);
 
+  if (setMeals === "null") {
+    return (
+      <div>
+        No Meals Found! Tip: Please search for ingredient, not food type.
+      </div>
+    );
+  }
   return (
     <PageContainer>
       <ForkSpoonImg src={forkspoon} />
       <form onSubmit={submitHandler}>
+        <h2 style={{ textAlign: "center" }}>Please Search an Ingredient</h2>
         <Input type="text" onInput={(e) => setSearched(e.target.value)}></Input>
         <Button type="submit">
           <SearchIcon />
