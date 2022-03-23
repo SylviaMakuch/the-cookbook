@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Categories from "./components/Categories.js";
 import Search from "./components/Search.js";
+import Recipe from "./components/Recipe.js"
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 const PageContainer = styled.div`
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/search" element={<Search />} />
           <Route path="catergories" element={<Categories />} />
+          <Route path="/recipe/:id" element={Recipe}/>
         </Routes>
       </BrowserRouter>
     </PageContainer>
