@@ -28,7 +28,7 @@ function App() {
         <Routes>
           <Route path="/search" element={<Search />} />
           <Route path="catergories" element={<Categories />} />
-          <Route path="/recipe/:id" element={Recipe}/>
+          <Route path="/meal/:id" element={<Recipe />} />
         </Routes>
       </BrowserRouter>
     </PageContainer>

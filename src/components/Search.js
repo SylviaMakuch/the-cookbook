@@ -80,12 +80,9 @@ export default function Search() {
       <CardContainter>
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
           return (
-            <Tag
-              href={`www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`}
-              key={index}
-            >
+            <Link to={`/meal/${idMeal}`} key={index}>
               <Cards key={index} title={strMeal} url={strMealThumb} />
-            </Tag>
+            </Link>
           );
         })}
       </CardContainter>
