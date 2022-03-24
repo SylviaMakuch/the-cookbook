@@ -64,6 +64,7 @@ export default function Search() {
       `https://www.themealdb.com/api/json/v1/1/filter.php?i=${isSearched}`
     );
     setMeals(res.data.meals);
+    
   };
   useEffect(() => {}, [meals]);
 
@@ -82,10 +83,11 @@ export default function Search() {
           return (
             <Link to={`/meal/${idMeal}`} key={index}>
               <Cards key={index} title={strMeal} url={strMealThumb} />
+  
             </Link>
           );
         })}
       </CardContainter>
     </PageContainer>
   );
-} 
+}

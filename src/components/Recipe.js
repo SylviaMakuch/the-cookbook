@@ -36,27 +36,34 @@ const IngredientBox = styled.div`
   flex-direction: column;
 `;
 
-const RecipeBox = styled.div`
+const QuanityBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
 `;
 
-export default function Recipe({id}) {
-    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${"id"}`;
-    axios.get(url)
-    .then(data => {console.log(data)})
-    .catch(err => {console.log(err)});
+const Instructions = styled.div``;
 
-    const [recipe, setRecipe] = useState([]);
-    const [id, setId] = useState("");
+export default function Recipe() {
+  const [recipe, setRecipe] = useState([]);
+  const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52878";
+  axios
+    .get(url)
+    .then((res) => {
+      console.log(res.data.meals[0]);
+    })
+
+    .catch((err) => {
+      console.log(err);
+    });
+
   return (
     <PageContainer>
-      <Title></Title>
-      <Picture />
-      <a href=""></a>
+      <Title>{strMeal}</Title>
+      {/* <Picture src={strMealThumb}/>
       <IngredientBox></IngredientBox>
-      <RecipeBox></RecipeBox>
+      <QuanityBox>{strInstructions}</QuanityBox>
+      <Instructions></Instructions> */}
     </PageContainer>
   );
 }
