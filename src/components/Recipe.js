@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -41,8 +42,14 @@ const RecipeBox = styled.div`
   flex-direction: column;
 `;
 
-export default function Recipe() {
-    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i={52934}`
+export default function Recipe({id}) {
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${"id"}`;
+    axios.get(url)
+    .then(data => {console.log(data)})
+    .catch(err => {console.log(err)});
+
+    const [recipe, setRecipe] = useState([]);
+    const [id, setId] = useState("");
   return (
     <PageContainer>
       <Title></Title>
