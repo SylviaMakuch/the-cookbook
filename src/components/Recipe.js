@@ -79,13 +79,13 @@ export default function Recipe() {
   const ingredients = recipe.strIngredient;
   const measurement = recipe.strMeasure;
 
-  for (let i = 0; i < ingredients.length; i++) {
-    ingredients[i]
-  }
+// for (let i = 0; i < ingredients.length; i++) {
+//   ingredients[i]
+// }
 
-  for (let i = 0; i < measurement.length; i++) {
-    measurement[i]
-  }
+// for (let i = 0; i < measurement.length; i++) {
+//   measurement[i]
+// }
   return (
     <PageContainer>
       <Title>{recipe.strMeal}</Title>
@@ -95,7 +95,10 @@ export default function Recipe() {
       </SubTitle>
       <a href={recipe.strYoutube}></a>
       <IngredientBox >{recipe.strIngredient}</IngredientBox>
-      <QuanityBox>{recipe.strMeasure}</QuanityBox>
+      {measurement.map((measurement, i) => (
+        <QuanityBox key={i}>{measurement}</QuanityBox>)
+      )}
+    
       <Instructions>{recipe.strInstructions}</Instructions>
     </PageContainer>
   );
