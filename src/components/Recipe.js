@@ -49,8 +49,9 @@ const QuanityBox = styled.div`
 
 const Instructions = styled.ul`
   font-family: "Abril Fatface";
+  font-size: 20px;
   width: 700px;
-  white-space: pre-line
+  white-space: pre-line;
   word-spacing: 4px;
 `;
 
@@ -58,7 +59,7 @@ export default function Recipe() {
   const [recipe, setRecipe] = useState([]);
 
   const fetchRecipe = () => {
-    const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52878";
+    const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52874";
     axios
       .get(url)
       .then((res) => {
@@ -75,6 +76,16 @@ export default function Recipe() {
     fetchRecipe();
   }, []);
 
+  const ingredients = recipe.strIngredient;
+  const measurement = recipe.strMeasure;
+
+for (let i = 0; i < ingredients.length; i++) {
+  ingredients[i]
+}
+
+for (let i = 0; i < measurement.length; i++) {
+  measurement[i]
+}
   return (
     <PageContainer>
       <Title>{recipe.strMeal}</Title>
@@ -82,9 +93,10 @@ export default function Recipe() {
       <SubTitle>
         Catergories: {recipe.strCategory}, {recipe.strArea}
       </SubTitle>
-      <IngredientBox></IngredientBox>
-      <QuanityBox>{recipe.strInstructions}</QuanityBox>
-      <Instructions></Instructions>
+      <a href={recipe.strYoutube}></a>
+      <IngredientBox >{recipe.strIngredient}</IngredientBox>
+      <QuanityBox>{recipe.strMeasure}</QuanityBox>
+      <Instructions>{recipe.strInstructions}</Instructions>
     </PageContainer>
   );
 }
