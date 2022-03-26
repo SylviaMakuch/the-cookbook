@@ -57,6 +57,7 @@ const Instructions = styled.ul`
 
 export default function Recipe() {
   const [recipe, setRecipe] = useState([]);
+  const [ingredient, setIngredient] = useState("")
 
   const fetchRecipe = () => {
     const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52874";
