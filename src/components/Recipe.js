@@ -57,19 +57,15 @@ const Instructions = styled.ul`
 
 export default function Recipe() {
   const [recipe, setRecipe] = useState([]);
-  const [ingredient, setIngredient] = useState("")
+  const [ingredient, setIngredient] = useState("");
 
   const fetchRecipe = () => {
     const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52874";
     axios
       .get(url)
       .then((res) => {
-        if (data.meals === null || ingredient === "") {
-          setIsDataNull(true);
-        } else {
-          console.log(res.data.meals[0]);
-          setRecipe(res.data.meals[0]);
-        }
+        console.log(res.data.meals[0]);
+        setRecipe(res.data.meals[0]);
       })
       .catch((err) => {
         console.log(err);
@@ -80,9 +76,27 @@ export default function Recipe() {
     fetchRecipe();
   }, []);
 
-  const ingredients = recipe.strIngredient;
-  const measurement = recipe.strMeasure;
-
+  const ingredientList = recipe
+    .map((allData) => {
+      const arr = [];
+      for (let i = 1; i <= 30; i++) {
+        arr.push(
+          allData[`strMeasure${i}`] + " " + allData[`strIngredient${i}`]
+        );
+      }
+      return arr;
+    })
+    .map((measureAndIngredientData) => {
+      return (
+        <div>
+          {measureAndIngredientData.map(
+            (measureAndIngredientElement, index) => (
+              <p key={index}>{measureAndIngredientElement}</p>
+            )
+          )}
+        </div>
+      );
+    });
   return (
     <PageContainer>
       <Title>{recipe.strMeal}</Title>
@@ -91,10 +105,8 @@ export default function Recipe() {
         Catergories: {recipe.strCategory}, {recipe.strArea}
       </SubTitle>
       <a href={recipe.strYoutube}></a>
-      <IngredientBox>{recipe.strIngredient}</IngredientBox>
-      {measurement.map((measurement, i) => (
-        <QuanityBox key={i}>{measurement}</QuanityBox>
-      ))}
+      <IngredientBox>{ingredientList}</IngredientBox>
+
       <Instructions>{recipe.strInstructions}</Instructions>
     </PageContainer>
   );
