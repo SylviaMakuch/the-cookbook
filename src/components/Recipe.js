@@ -15,7 +15,7 @@ const PageContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
   font-weight: 300;
   color: red;
   font-size: 40px;
@@ -63,10 +63,13 @@ export default function Recipe() {
     axios
       .get(url)
       .then((res) => {
-        console.log(res.data.meals[0]);
-        setRecipe(res.data.meals[0]);
+        if (data.meals === null || ingredient === "") {
+          setIsDataNull(true);
+        } else {
+          console.log(res.data.meals[0]);
+          setRecipe(res.data.meals[0]);
+        }
       })
-
       .catch((err) => {
         console.log(err);
       });
@@ -79,13 +82,6 @@ export default function Recipe() {
   const ingredients = recipe.strIngredient;
   const measurement = recipe.strMeasure;
 
-// for (let i = 0; i < ingredients.length; i++) {
-//   ingredients[i]
-// }
-
-// for (let i = 0; i < measurement.length; i++) {
-//   measurement[i]
-// }
   return (
     <PageContainer>
       <Title>{recipe.strMeal}</Title>
@@ -94,11 +90,10 @@ export default function Recipe() {
         Catergories: {recipe.strCategory}, {recipe.strArea}
       </SubTitle>
       <a href={recipe.strYoutube}></a>
-      <IngredientBox >{recipe.strIngredient}</IngredientBox>
+      <IngredientBox>{recipe.strIngredient}</IngredientBox>
       {measurement.map((measurement, i) => (
-        <QuanityBox key={i}>{measurement}</QuanityBox>)
-      )}
-    
+        <QuanityBox key={i}>{measurement}</QuanityBox>
+      ))}
       <Instructions>{recipe.strInstructions}</Instructions>
     </PageContainer>
   );
