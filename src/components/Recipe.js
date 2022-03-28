@@ -77,24 +77,10 @@ export default function Recipe() {
     fetchRecipe();
   }, []);
 
-  const ingredientList = recipeData
-    .map((allData) => {
-      const arr = [];
+  const ingredientList = () => {
       for (let i = 1; i <= 20; i++) {
-        arr.push(
-          allData[`strMeasure${i}`] + " " + allData[`strIngredient${i}`]
-        );
-      }
-      return arr;
-    })
-
-    // .map((measureAndIngredientData) => {
-    //   return (
-    //     <div>
-         
-    //     </div>
-    //   );
-    // });
+       return (recipe.strIngredient[i]) ? <li>{recipe.strIngredient[i]}</li> : null;
+      }}
 
   return (
     <PageContainer>
@@ -104,7 +90,8 @@ export default function Recipe() {
         Catergories: {recipe.strCategory}, {recipe.strArea}
       </SubTitle>
       <Instructions>{recipe.strInstructions}</Instructions>
-      <IngredientBox>{recipe.strIngredient1}</IngredientBox>   
+      <IngredientBox>Ingredients:  {recipe.strMeasure1} {recipe.strIngredient1}</IngredientBox>
+      <IngredientBox>  {recipe.strMeasure2} {recipe.strIngredient2}</IngredientBox>
     </PageContainer>
   );
 }
