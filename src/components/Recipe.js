@@ -57,6 +57,7 @@ const Instructions = styled.ul`
 
 export default function Recipe() {
   const [recipe, setRecipe] = useState([]);
+  const [recipeData, setRecipeData] = useState([]);
   const [ingredient, setIngredient] = useState("");
 
   const fetchRecipe = () => {
@@ -76,27 +77,25 @@ export default function Recipe() {
     fetchRecipe();
   }, []);
 
-  const ingredientList = recipe
+  const ingredientList = recipeData
     .map((allData) => {
       const arr = [];
-      for (let i = 1; i <= 30; i++) {
+      for (let i = 1; i <= 20; i++) {
         arr.push(
           allData[`strMeasure${i}`] + " " + allData[`strIngredient${i}`]
         );
       }
       return arr;
     })
-    .map((measureAndIngredientData) => {
-      return (
-        <div>
-          {measureAndIngredientData.map(
-            (measureAndIngredientElement, index) => (
-              <p key={index}>{measureAndIngredientElement}</p>
-            )
-          )}
-        </div>
-      );
-    });
+
+    // .map((measureAndIngredientData) => {
+    //   return (
+    //     <div>
+         
+    //     </div>
+    //   );
+    // });
+
   return (
     <PageContainer>
       <Title>{recipe.strMeal}</Title>
@@ -104,10 +103,8 @@ export default function Recipe() {
       <SubTitle>
         Catergories: {recipe.strCategory}, {recipe.strArea}
       </SubTitle>
-      <a href={recipe.strYoutube}></a>
-      <IngredientBox>{ingredientList}</IngredientBox>
-
       <Instructions>{recipe.strInstructions}</Instructions>
+      <IngredientBox>{recipe.strIngredient1}</IngredientBox>   
     </PageContainer>
   );
 }
