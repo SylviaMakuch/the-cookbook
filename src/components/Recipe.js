@@ -55,11 +55,29 @@ const Instructions = styled.ul`
   word-spacing: 4px;
 `;
 
+function createIngredientList(recipe) {
+  const items = [];
+
+  for (let i = 1; i <= 20; i += 1) {
+    const strIngredient = recipe[`strIngredient${i}`];
+    const strMeasure = recipe[`strMeasure${i}`];
+
+    if (strIngredient || strMeasure) {
+      items.push({
+        ingredient: strIngredient,
+        measure: strMeasure,
+      });
+    }
+  }
+
+  return items;
+}
+
 export default function Recipe() {
   const [recipe, setRecipe] = useState([]);
 
   const fetchRecipe = () => {
-    const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52874";
+    const url = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=52874';
     axios
       .get(url)
       .then((res) => {
@@ -75,22 +93,7 @@ export default function Recipe() {
     fetchRecipe();
   }, []);
 
-  // let arr = [];
-  // for (let i = 1; i <= 20; i++) {
-  //   arr.push(`strIngredient${i}` + " ");
-  // }
-
-  const items = [];
-
-  for (let i = 1; i <= 20; i += 1) {
-    const strIngredient = [`strIngredient${i}`];
-    const strMeasure = [`strMeasure${i}`];
-
-    items.push({
-      ingredient: strIngredient,
-      measure: strMeasure,
-    });
-  }
+  const items = createIngredientList(recipe);
 
   return (
     <PageContainer>
@@ -101,13 +104,13 @@ export default function Recipe() {
       </SubTitle>
       <Instructions>{recipe.strInstructions}</Instructions>
       <IngredientBox>
-      <ul>
-      {items.map((item) => (
-        <li key={item.ingredient}>
-          {item.ingredient}: {item.measure}
-        </li>
-      ))}
-    </ul>
+        <ul>
+          {items.map((item) => (
+            <li key={item.ingredient}>
+              {item.ingredient}: {item.measure}
+            </li>
+          ))}
+        </ul>
       </IngredientBox>
     </PageContainer>
   );
