@@ -107,7 +107,7 @@ export default function Recipe() {
         <ul>
           {items.map((item) => (
             <li key={item.ingredient}>
-              {item.ingredient}: {item.measure}
+              {item.measure}: {item.ingredient}
             </li>
           ))}
         </ul>
