@@ -102,7 +102,6 @@ export default function Recipe() {
       <SubTitle>
         Catergories: {recipe.strCategory}, {recipe.strArea}
       </SubTitle>
-      <Instructions>{recipe.strInstructions}</Instructions>
       <IngredientBox>
         <ul>
           {items.map((item) => (
@@ -112,6 +111,7 @@ export default function Recipe() {
           ))}
         </ul>
       </IngredientBox>
+      <Instructions>{recipe.strInstructions}</Instructions>
     </PageContainer>
   );
 }
