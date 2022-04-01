@@ -5,13 +5,14 @@ const Cards = styled.div`
   height: 480px;
   width: 350px;
   border-radius: 25px;
-  margin: 20px;
+  margin: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   &:hover {
     transform: translateY(-10px);
     background-image: linear-gradient(to bottom, #ff000000, #000000e0);
+    color: white;
   }
 `;
 
@@ -24,7 +25,7 @@ const Image = styled.img`
 `;
 
 const Title = styled.h2`
-  font-family: "Abril Fatface";
+  font-family: 'Inconsolata', monospace;
   color: black;
   text-align: center;
   text-transform: uppercase
@@ -32,7 +33,7 @@ const Title = styled.h2`
   font-size: 25px;
   letter-spacing: 0.8px;
   &:hover {
-    color: red;
+    color: orange;
   }
 `;
 

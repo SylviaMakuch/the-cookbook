@@ -158,5 +158,5 @@ export default function Recipe() {
       <Line />
       <Line />
     </PageContainer>
-  );
+  );  
 }
