@@ -47,14 +47,14 @@ const SubTitle = styled.h2`
   text-decoration-color: antiquewhite;
 `;
 
-const Picture = styled.img`
-  width: 500px;
-  border-radius: 0px 0px 50px 50px;
-  background-image: linear-gradient(to top, #ff000000, #ff000000, #f9e8e894);
-  @media (max-width: 500px) {
-    width: 300px;
-  }
-`;
+  const Picture = styled.img`
+    width: 500px;
+    border-radius: 0px 0px 50px 50px;
+    background-image: linear-gradient(to top, #ff000000, #ff000000, #f9e8e894);
+    @media (max-width: 500px) {
+      width: 300px;
+    }
+  `;
 
 const IngredientBox = styled.div``;
 
@@ -112,7 +112,7 @@ export default function Recipe() {
   const [recipe, setRecipe] = useState([]);
 
   const fetchRecipe = () => {
-    const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52814";
+    const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52815";
     axios
       .get(url)
       .then((res) => {
