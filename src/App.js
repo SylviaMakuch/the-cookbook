@@ -5,24 +5,15 @@ import Search from "./components/Search.js";
 import Recipe from "./components/Recipe.js"
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-const PageContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-`;
-
 const H1 = styled.h1`
   font-size: 88px;
   font-family: "Inspiration", cursive;
+  text-align: center;
 `;
 
 function App() {
   return (
-    <PageContainer>
+    <>
       <H1>The CookBook</H1>
       <BrowserRouter>
         <Routes>
@@ -31,7 +22,7 @@ function App() {
           <Route path="/meal/:id" element={<Recipe />} />
         </Routes>
       </BrowserRouter>
-    </PageContainer>
+    </>
   );
 }
 

@@ -13,6 +13,7 @@ const PageContainer = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   margin: 0;
+  font-family: "Inconsolata", monospace;
 `;
 
 const InnerContainer = styled.div`
@@ -27,7 +28,7 @@ const InnerContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-family: "Roboto Slab", serif;
+  font-family: "Cormorant", serif;
   font-weight: 800;
   -webkit-font-smoothing: antialiased;
   color: red;
@@ -36,34 +37,58 @@ const Title = styled.h1`
 `;
 
 const SubTitle = styled.h2`
-  font-family: "Abril Fatface, italic";
-  color: blue;
+  font-family: 'Cormorant', serif;
+  color: #f2a14e;
   text-transform: uppercase
   font-size: 20px;
   letter-spacing: 0.8px;
   font-style: italic;
+  text-decoration-line: underline;
+  text-decoration-color: antiquewhite;
 `;
 
 const Picture = styled.img`
   width: 500px;
   border-radius: 0px 0px 50px 50px;
   background-image: linear-gradient(to top, #ff000000, #ff000000, #f9e8e894);
+  @media (max-width: 500px) {
+    width: 300px;
+  }
 `;
 
 const IngredientBox = styled.div``;
 
-const QuanityBox = styled.div`
-  /* display: flex;
-  flex-wrap: wrap;
-  flex-direction: column; */
+const InstructionTitle = styled.h3`
+font-family: 'Cormorant', serif;
+  color: #697ff9;
+  text-transform: uppercase
+  font-size: 20px;
+  letter-spacing: 0.8px;
+  font-style: italic;
+  text-decoration-line: overline;
+  text-decoration-color: #2cddd9;
 `;
 
 const Instructions = styled.div`
-  font-family: "Abril Fatface";
+  font-family: "Cormorant", serif;
+  line-height: 1.5;
   font-size: 20px;
   width: 700px;
   white-space: pre-line;
   word-spacing: 4px;
+  padding: 50px;
+  margin: 30px;
+  border-radius: 50px;
+  background: #fcf0cf;
+  box-shadow: -20px 20px 60px #b1ccca, 20px -20px 60px #efffff;
+`;
+
+const Line = styled.div`
+  width: 100%;
+  height: 0;
+  border: 1px solid #1b676599;
+  margin: 3px;
+  display: inline-block;
 `;
 
 function createIngredientList(recipe) {
@@ -106,29 +131,32 @@ export default function Recipe() {
   const items = createIngredientList(recipe);
 
   return (
-    <>
-      <PageContainer>
-        <InnerContainer>
-          <Title>{recipe.strMeal}</Title>
-          <h3>
-            Catergories: {recipe.strCategory}, {recipe.strArea}
-          </h3>
-          <Picture src={recipe.strMealThumb} />
-        </InnerContainer>
-        <InnerContainer>
-          <IngredientBox>
-            <SubTitle> Ingredients </SubTitle>{" "}
-            <ul>
-              {items.map((item) => (
-                <QuanityBox key={item.ingredient}>
-                  {item.measure} of {item.ingredient}
-                </QuanityBox>
-              ))}
-            </ul>
-          </IngredientBox>
-        </InnerContainer>
-        <Instructions>{recipe.strInstructions}</Instructions>
-      </PageContainer>
-    </>
+    <PageContainer>
+      <Line />
+      <Line />
+      <InnerContainer>
+        <Title>{recipe.strMeal}</Title>
+        <Picture src={recipe.strMealThumb} />
+        <h3>
+          Catergories: {recipe.strCategory}, {recipe.strArea}
+        </h3>
+      </InnerContainer>
+      <InnerContainer>
+        <SubTitle> Ingredients: </SubTitle>{" "}
+        <ul>
+          {items.map((item) => (
+            <IngredientBox key={item.ingredient}>
+              {item.measure} of {item.ingredient}
+            </IngredientBox>
+          ))}
+        </ul>
+      </InnerContainer>
+      <Instructions>
+        <InstructionTitle>Instructions:</InstructionTitle>
+        {recipe.strInstructions}
+      </Instructions>
+      <Line />
+      <Line />
+    </PageContainer>
   );
 }
