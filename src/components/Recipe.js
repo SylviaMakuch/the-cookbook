@@ -112,7 +112,7 @@ export default function Recipe() {
   const [recipe, setRecipe] = useState([]);
 
   const fetchRecipe = () => {
-    const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52874";
+    const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52814";
     axios
       .get(url)
       .then((res) => {
