@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Cards = styled.div`
-  background-image: linear-gradient(to top, #ff000000, #ff000000, #f9e8e894);
+  background-image: linear-gradient(to top, #10101026, #ff000000, #ff000000, #f9e8e8eb);
   height: 480px;
   width: 350px;
   border-radius: 25px;
@@ -9,6 +9,8 @@ const Cards = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow:  10px 10px 20px #bebebe,
+             -10px -10px 20px #ffffff;
   &:hover {
     transform: translateY(-10px);
     background-image: linear-gradient(to bottom, #ff000000, #000000e0);

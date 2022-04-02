@@ -15,22 +15,19 @@ const PageContainer = styled.div`
   align-content: center;
   flex-wrap: wrap;
   flex-direction: column;
-  margin: 0;
+  margin-top: 20px;
   overflow-x: hidden;
 `;
 
 const Image = styled.img`
   width: 100%;
   height: 1100px;
-  @media (max-width: 500px) {
-    height: 600px;
-  }
-  @media (max-width: 1200px) {
-    height: 1000px;
-  }
-
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  opacity: 0.95;
   @media (max-width: 1700px) {
-    width: auto;
+    height: 600px;
   }
 `;
 
@@ -51,6 +48,7 @@ const Button = styled.button`
   position: relative;
   top: 4px;
 `;
+
 const Input = styled.input`
   padding: 18px;
   border-radius: 25px;
@@ -61,6 +59,9 @@ const Input = styled.input`
 const Form = styled.form`
   position: absolute;
   top: 550px;
+  @media (max-width: 1700px) {
+    top: 350px;
+  }
 `;
 
 const SubTitle = styled.h2`
@@ -94,15 +95,16 @@ export default function Search() {
         </SubTitle>
         <Input type="text" onInput={(e) => setSearched(e.target.value)}></Input>
         <Button type="submit">
-          <SearchIcon />
+          <SearchIcon style={{ color: "white" }}  />
         </Button>
       </Form>
+       {/* <h1> Your Results</h1> */}
       <CardContainter>
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
           return (
             <Link
               to={`/meal/${idMeal}`}
-              onClick={() => alert("boo")}
+              onClick={() => alert(idMeal)}
               key={index}
             >
               <Cards key={index} title={strMeal} url={strMealThumb} />
