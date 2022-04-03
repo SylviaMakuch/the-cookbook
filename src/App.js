@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import Categories from "./../components/Categories.js"
-import Search from "./../components/Search.js";
-import Recipe from "../components/Recipe.js"
+import Categories from "./components/Categories.js"
+import Search from "./components/Search.js";
+import Recipe from "./components/Recipe.js"
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import forkspoon from "./../media/forkspoon.jpeg";
+import forkspoon from "./media/forkspoon.svg";
 
 const H1 = styled.h1`
   font-size: 88px;
