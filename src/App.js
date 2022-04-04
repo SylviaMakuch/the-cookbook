@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Categories from "./components/Categories.js"
 import Search from "./components/Search.js";
-import Recipe from "./components/Recipe.js"
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import forkspoon from "./media/forkspoon.svg";
+import Meal from "./components/Meal.js";
 
 const H1 = styled.h1`
   font-size: 88px;
@@ -30,7 +30,7 @@ function App() {
         <Routes>
           <Route path="/search" element={<Search />} />
           <Route path="catergories" element={<Categories />} />
-          <Route path="/meal/:id" element={<Recipe />} />
+          <Route path="/meal/:mealId" element={<Meal />} />
         </Routes>
       </BrowserRouter>
     </>

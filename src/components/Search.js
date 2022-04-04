@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import heartfood from "./../media/heartfood.jpeg";
@@ -84,7 +84,6 @@ export default function Search() {
     );
     setMeals(res.data.meals);
   };
-  useEffect(() => {}, [meals]);
 
   return (
     <PageContainer>
@@ -95,16 +94,15 @@ export default function Search() {
         </SubTitle>
         <Input type="text" onInput={(e) => setSearched(e.target.value)}></Input>
         <Button type="submit">
-          <SearchIcon style={{ color: "white" }}  />
+          <SearchIcon style={{ color: "white" }} />
         </Button>
       </Form>
-       {/* <h1> Your Results</h1> */}
+      {/* <h1> Your Results</h1> */}
       <CardContainter>
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
           return (
             <Link
               to={`/meal/${idMeal}`}
-              onClick={() => alert(idMeal)}
               key={index}
             >
               <Cards key={index} title={strMeal} url={strMealThumb} />

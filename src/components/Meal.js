@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import styled from "styled-components";
-import axios from "axios";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -47,7 +47,7 @@ const SubTitle = styled.h2`
   text-decoration-color: antiquewhite;
 `;
 
-  const Picture = styled.img`
+const Picture = styled.img`
     width: 500px;
     border-radius: 0px 0px 50px 50px;
     background-image: linear-gradient(to top, #ff000000, #ff000000, #f9e8e894);
@@ -91,72 +91,73 @@ const Line = styled.div`
   display: inline-block;
 `;
 
-function createIngredientList(recipe) {
-  const items = [];
+function createIngredientList(meal) {
+    const items = [];
 
-  for (let i = 1; i <= 20; i += 1) {
-    const strIngredient = recipe[`strIngredient${i}`];
-    const strMeasure = recipe[`strMeasure${i}`];
+    for (let i = 1; i <= 20; i += 1) {
+        const strIngredient = meal?.[`strIngredient${i}`];
+        const strMeasure = meal?.[`strMeasure${i}`];
 
-    if (strIngredient || strMeasure) {
-      items.push({
-        ingredient: strIngredient,
-        measure: strMeasure,
-      });
+        if (strIngredient || strMeasure) {
+            items.push({
+                ingredient: strIngredient,
+                measure: strMeasure,
+            });
+        }
     }
-  }
-  return items;
+    return items;
 }
 
-export default function Recipe() {
-  const [recipe, setRecipe] = useState([]);
+export default function Meal() {
+    const [meal, setMeal] = useState(null);
 
-  const fetchRecipe = () => {
-    const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52815";
-    axios
-      .get(url)
-      .then((res) => {
-        console.log(res.data.meals[0]);
-        setRecipe(res.data.meals[0]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    const params = useParams();
 
-  useEffect(() => {
-    fetchRecipe();
-  }, []);
+    useEffect(() => {
+        const mealId = params.mealId;
+        if (mealId) {
+            fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`).then((res) => {
+                console.log(res);
+                res.json().then(json => {
+                    console.log("json", json);
+                    setMeal(json.meals[0]);
+                })
+            })
+        }
+    }, [params?.mealId])
 
-  const items = createIngredientList(recipe);
 
-  return (
-    <PageContainer>
-      <Line />
-      <Line />
-      <InnerContainer>
-        <Title>{recipe.strMeal}</Title>
-        <Picture src={recipe.strMealThumb} />
-        <h3>
-          Catergories: {recipe.strCategory}, {recipe.strArea}
-        </h3>
-      </InnerContainer>
-      <InnerContainer>
-        <SubTitle> Ingredients: </SubTitle>{" "}
-        <ul>
-          {items.map((item) => (
-            <IngredientBox key={item.ingredient}>
-              {item.measure} of {item.ingredient}
-            </IngredientBox>
-          ))}
-        </ul>
-      </InnerContainer>
-      <Instructions>
-        <InstructionTitle>Instructions:</InstructionTitle>
-        {recipe.strInstructions}
-      </Instructions>
-      <Line />
-      <Line />
-    </PageContainer>
-  );  
+
+    const items = createIngredientList(meal);
+
+
+    return (
+        <PageContainer>
+            <Line />
+            <Line />
+            <InnerContainer>
+                <Title>{meal?.strMeal}</Title>
+                <Picture src={meal?.strMealThumb} />
+                <h3>
+                    Catergories: {meal?.strCategory}, {meal?.strArea}
+                </h3>
+            </InnerContainer>
+            <InnerContainer>
+                <SubTitle> Ingredients: </SubTitle>{" "}
+                <ul>
+                    {items.map((item) => (
+                        <IngredientBox key={item.ingredient}>
+                            {item.measure} of {item.ingredient}
+                        </IngredientBox>
+                    ))}
+                </ul>
+            </InnerContainer>
+            <Instructions>
+                <InstructionTitle>Instructions:</InstructionTitle>
+                {meal?.strInstructions}
+            </Instructions>
+            <Line />
+            <Line />
+        </PageContainer>
+    );
 }
