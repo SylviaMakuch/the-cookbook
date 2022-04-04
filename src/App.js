@@ -21,7 +21,7 @@ function App() {
   return (
     <>
     <div style={{display: "flex", justifyContent: "center"}}>
-    <ForkSpoonImg src={forkspoon} />
+      <ForkSpoonImg src={forkspoon} />
     <H1>The CookBook</H1>
       <ForkSpoonImg src={forkspoon} />
     </div>

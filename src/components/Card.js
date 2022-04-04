@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Cards = styled.div`
-  background-image: linear-gradient(to top, #10101026, #ff000000, #ff000000, #f9e8e8eb);
+  background-image: linear-gradient(to top, #ff000000, #ff000000, #ff000000, #f9e8e8eb);
   height: 480px;
   width: 350px;
   border-radius: 25px;
@@ -35,7 +35,7 @@ const Title = styled.h2`
   font-size: 25px;
   letter-spacing: 0.8px;
   &:hover {
-    color: orange;
+    color: red;
   }
 `;
 

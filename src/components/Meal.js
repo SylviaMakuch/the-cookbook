@@ -19,12 +19,16 @@ const PageContainer = styled.div`
 const InnerContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   flex-direction: column;
   margin: 50px;
   padding: 50px;
   border-radius: 50px;
   background: linear-gradient(225deg, #bbd8d6, #dfffff);
   box-shadow: -20px 20px 60px #b1ccca, 20px -20px 60px #efffff;
+  @media (max-width: 600px) {
+    padding: 40px;
+  }
 `;
 
 const Title = styled.h1`
@@ -51,7 +55,7 @@ const Picture = styled.img`
     width: 500px;
     border-radius: 0px 0px 50px 50px;
     background-image: linear-gradient(to top, #ff000000, #ff000000, #f9e8e894);
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       width: 300px;
     }
   `;

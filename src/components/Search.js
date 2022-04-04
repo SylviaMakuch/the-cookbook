@@ -27,7 +27,7 @@ const Image = styled.img`
   padding: 10px;
   opacity: 0.95;
   @media (max-width: 1700px) {
-    height: 600px;
+    height: 620px;
   }
 `;
 
@@ -37,7 +37,6 @@ const CardContainter = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   align-content: flex-start;
-  max-width: 1600px;
   justify-content: center;
 `;
 
@@ -72,17 +71,37 @@ const SubTitle = styled.h2`
   letter-spacing: 0.8px;
 `;
 
+const Title = styled.h1`
+  font-family: "Cormorant", serif;
+  font-weight: 800;
+  -webkit-font-smoothing: antialiased;
+  color: red;
+  font-size: 40px;
+  letter-spacing: 0.8px;
+`;
+
 export default function Search() {
   const [isSearched, setSearched] = useState("");
   const [meals, setMeals] = useState([]);
+  const [isDataNull, setDataNull] = useState(false);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     // console.log(isSearched);
     const res = await axios.get(
       `https://www.themealdb.com/api/json/v1/1/filter.php?i=${isSearched}`
-    );
-    setMeals(res.data.meals);
+    ).then((res) => {
+      if (res.data.meals === null) {
+        setDataNull(true);
+      }else{
+        setMeals(res.data.meals);
+        setDataNull(false);
+      }
+    });
+
+    if (meals === null) {
+      console.log("No meals found");
+    } 
   };
 
   return (
@@ -98,6 +117,7 @@ export default function Search() {
         </Button>
       </Form>
       {/* <h1> Your Results</h1> */}
+      <Title>{meals ? "Your Results" : "Type in an ingredient" }</Title>
       <CardContainter>
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
           return (
