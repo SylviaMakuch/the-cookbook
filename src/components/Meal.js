@@ -147,7 +147,7 @@ export default function Meal() {
                 <ul>
                     {items.map((item) => (
                         <IngredientBox key={item.ingredient}>
-                            {item.measure} of {item.ingredient}
+                            {item.measure}  {item.ingredient}
                         </IngredientBox>
                     ))}
                 </ul>
