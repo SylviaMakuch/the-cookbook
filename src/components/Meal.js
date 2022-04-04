@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import styled from "styled-components";
 import bricks from "./../media/bricks.svg";
+import Header from "./Header";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -151,6 +152,7 @@ export default function Meal() {
 } else {
   return (
     <PageContainer>
+      <Header />
       <Line />
       <Line />
       <InnerContainer>

@@ -6,6 +6,8 @@ import heartfood from "./../media/heartfood.jpeg";
 import styled from "styled-components";
 import Cards from "./Card.js";
 import { Link } from "react-router-dom";
+import Header from "./Header.js";
+
 
 const PageContainer = styled.div`
   display: flex;
@@ -26,7 +28,7 @@ const Image = styled.img`
   border: 1px solid #ddd;
   border-radius: 4px;
   @media (max-width: 1700px) {
-    height: 650px;
+    height: 600px;
   }
   @media (max-width: 500px) {
     height: 500px;
@@ -120,6 +122,7 @@ export default function Search() {
 
   return (
     <PageContainer>
+      <Header />
       <Image src={heartfood} />
       <Form onSubmit={submitHandler}>
         <SubTitle style={{ textAlign: "center" }}>
@@ -130,7 +133,6 @@ export default function Search() {
           <SearchIcon style={{ color: "white" }} />
         </Button>
       </Form>
-      {/* <h1> Your Results</h1> */}
       <Title>{isDataNull ? "No Meals Found, please type in an another ingredient" : "" }</Title>
       <CardContainter>
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
