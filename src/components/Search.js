@@ -21,13 +21,12 @@ const PageContainer = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  height: 1100px;
-  padding-top: 40px;
+  height: 900px;
+  padding-top: 50px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  filter: brightness(1.15);
   @media (max-width: 1700px) {
-    height: 620px;
+    height: 650px;
   }
   @media (max-width: 500px) {
     height: 500px;
