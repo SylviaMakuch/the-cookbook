@@ -8,7 +8,6 @@ import Cards from "./Card.js";
 import { Link } from "react-router-dom";
 
 const PageContainer = styled.div`
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,17 +16,22 @@ const PageContainer = styled.div`
   flex-direction: column;
   margin-top: 20px;
   overflow-x: hidden;
+  background-color: #b6dbc8;
 `;
 
 const Image = styled.img`
   width: 100%;
   height: 1100px;
+  padding-top: 40px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  padding: 10px;
-  opacity: 0.95;
+  filter: brightness(1.15);
   @media (max-width: 1700px) {
     height: 620px;
+  }
+  @media (max-width: 500px) {
+    height: 500px;
+    width: 140%;
   }
 `;
 
@@ -53,6 +57,9 @@ const Input = styled.input`
   border-radius: 25px;
   margin: 10px;
   width: 300px;
+  @media (max-width: 500px) {
+    width: auto;
+  }
 `;
 
 const Form = styled.form`
@@ -61,10 +68,13 @@ const Form = styled.form`
   @media (max-width: 1700px) {
     top: 350px;
   }
+  @media (max-width: 500px) {
+    top: 400px;
+  }
 `;
 
 const SubTitle = styled.h2`
-  font-family: 'Cormorant', serif;
+  font-family: 'Inconsolata', monospace;
   color: white;
   text-transform: uppercase
   font-size: 20px;
@@ -72,12 +82,16 @@ const SubTitle = styled.h2`
 `;
 
 const Title = styled.h1`
-  font-family: "Cormorant", serif;
+  font-family: 'Inconsolata', monospace;
   font-weight: 800;
   -webkit-font-smoothing: antialiased;
-  color: red;
+  color: blue;
   font-size: 40px;
   letter-spacing: 0.8px;
+  @media (max-width: 500px) {
+    font-size: 25px;
+    text-align: center;
+  }
 `;
 
 export default function Search() {
@@ -93,6 +107,7 @@ export default function Search() {
     ).then((res) => {
       if (res.data.meals === null) {
         setDataNull(true);
+        alert("No results found");
       }else{
         setMeals(res.data.meals);
         setDataNull(false);
@@ -117,7 +132,7 @@ export default function Search() {
         </Button>
       </Form>
       {/* <h1> Your Results</h1> */}
-      <Title>{meals ? "Your Results" : "Type in an ingredient" }</Title>
+      <Title>{isDataNull ? "No Meals Found, please type in an another ingredient" : "" }</Title>
       <CardContainter>
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
           return (
