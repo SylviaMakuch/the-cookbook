@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import forkspoon from "./../media/forkspoon.svg";
-
 
 const H1 = styled.h1`
     font-size: 88px;
@@ -10,7 +8,7 @@ const H1 = styled.h1`
     text-align: center;
     margin: 0px;
     color: black;
-    margin-bottom: 40px;
+    margin: 40px;
 `;
 
 const ForkSpoonImg = styled.img`
@@ -32,7 +30,6 @@ export default function Header() {
             <ForkSpoonImg src={forkspoon} />
             <H1>The CookBook</H1>
             <ForkSpoonImg src={forkspoon} />
-            {/* <Link to="/search"><Title>Search</Title></Link> */}
         </PageContainer>
     );
 }

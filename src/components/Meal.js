@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import styled from "styled-components";
 import bricks from "./../media/bricks.svg";
 import Header from "./Header";
+import {Link} from "react-router-dom";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -115,7 +116,6 @@ function createIngredientList(meal) {
 }
 
 export default function Meal() {
-  const [error, setError] = useState(null);
   const [meal, setMeal] = useState(null);
   const [isLoaded, setIsLoaded] = useState(true);
 
@@ -145,14 +145,15 @@ export default function Meal() {
 
   const items = createIngredientList(meal);
 
-  if (error) {
-    return <div>Error</div>;
-} else if (!isLoaded) {
+ if (!isLoaded) {
     return <img src={bricks} alt='Loading...' />;
 } else {
   return (
-    <PageContainer>
+    <>
       <Header />
+        <Link to="/search"><SubTitle style={{color: "red"}}>   ←Go Back to Search</SubTitle></Link>
+    <PageContainer>
+  
       <Line />
       <Line />
       <InnerContainer>
@@ -179,5 +180,6 @@ export default function Meal() {
       <Line />
       <Line />
     </PageContainer>
+    </>
   );
 }}
