@@ -7,7 +7,7 @@ import styled from "styled-components";
 import Cards from "./Card.js";
 import { Link } from "react-router-dom";
 import Header from "./Header.js";
-
+import Footer from "./Footer.js";
 
 const PageContainer = styled.div`
   display: flex;
@@ -18,15 +18,12 @@ const PageContainer = styled.div`
   flex-direction: column;
   margin-top: 20px;
   overflow-x: hidden;
-  background-color: #b6dbc8;
 `;
 
 const Image = styled.img`
   width: 100%;
-  height: 900px;
-  padding-top: 50px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  height: 950px;
+  border: 80px solid #b6dbc8;
   @media (max-width: 1700px) {
     height: 600px;
   }
@@ -43,6 +40,7 @@ const CardContainter = styled.div`
   flex-direction: row;
   align-content: flex-start;
   justify-content: center;
+  min-height: 800px;
 `;
 
 const Button = styled.button`
@@ -105,14 +103,13 @@ export default function Search() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    // console.log(isSearched);
     const res = await axios.get(
       `https://www.themealdb.com/api/json/v1/1/filter.php?i=${isSearched}`
     ).then((res) => {
       if (res.data.meals === null) {
         setDataNull(true);
         alert("No results found");
-      }else{
+      } else {
         setMeals(res.data.meals);
         setDataNull(false);
       }
@@ -120,7 +117,7 @@ export default function Search() {
 
     if (meals === null) {
       console.log("No meals found");
-    } 
+    }
   };
 
   return (
@@ -131,12 +128,14 @@ export default function Search() {
         <SubTitle style={{ textAlign: "center" }}>
           Please Search an Ingredient
         </SubTitle>
+        <div>
         <Input type="text" onInput={(e) => setSearched(e.target.value)}></Input>
         <Button type="submit">
           <SearchIcon style={{ color: "white" }} />
         </Button>
+        </div>
       </Form>
-      <Title>{isDataNull ? "No Meals Found, please type in an another ingredient" : "" }</Title>
+      <Title>{isDataNull ? "No Meals Found, please type in an another ingredient" : ""}</Title>
       <CardContainter>
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
           return (
@@ -149,6 +148,7 @@ export default function Search() {
           );
         })}
       </CardContainter>
+      <Footer />
     </PageContainer>
   );
 }
