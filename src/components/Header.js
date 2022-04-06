@@ -3,13 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import forkspoon from "./../media/forkspoon.svg";
 
-const Title = styled.h1`
-    font-family: 'Alegreya Sans SC', sans-serif;
-        font-size: 50px;
-        font-weight:100;
-        color: black;
-        text-decoration: none;  
-`;
 
 const H1 = styled.h1`
     font-size: 88px;
@@ -17,6 +10,7 @@ const H1 = styled.h1`
     text-align: center;
     margin: 0px;
     color: black;
+    margin-bottom: 40px;
 `;
 
 const ForkSpoonImg = styled.img`
@@ -29,7 +23,6 @@ const PageContainer = styled.div`
     justify-content: center;    
     background-color: white;
     width: 100%;
-    margin-bottom: 20px;
 `;
 
 

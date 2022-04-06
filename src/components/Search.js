@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
-import heartfood from "./../media/heartfood.jpeg";
+import taco from "./../media/taco.jpeg";
 import styled from "styled-components";
 import Cards from "./Card.js";
 import { Link } from "react-router-dom";
@@ -66,6 +66,9 @@ const Input = styled.input`
 const Form = styled.form`
   position: absolute;
   top: 550px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   @media (max-width: 1700px) {
     top: 350px;
   }
@@ -78,7 +81,7 @@ const SubTitle = styled.h2`
   font-family: 'Inconsolata', monospace;
   color: white;
   text-transform: uppercase
-  font-size: 20px;
+  font-size: 40px;
   letter-spacing: 0.8px;
 `;
 
@@ -123,7 +126,7 @@ export default function Search() {
   return (
     <PageContainer>
       <Header />
-      <Image src={heartfood} />
+      <Image src={taco} />
       <Form onSubmit={submitHandler}>
         <SubTitle style={{ textAlign: "center" }}>
           Please Search an Ingredient
