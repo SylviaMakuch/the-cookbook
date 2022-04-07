@@ -23,7 +23,7 @@ const PageContainer = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 950px;
-  border: 80px solid #b6dbc8;
+  border: 45px solid #b6dbc8;
   @media (max-width: 1700px) {
     height: 600px;
   }
