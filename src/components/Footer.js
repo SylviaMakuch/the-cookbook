@@ -28,7 +28,7 @@ export default function Footer() {
             <Text style={{color: "#1f2e1a"}}> Thank you for coming to visit my Recipe Page!</Text>
             <SocialTab/>
             <Text> By: Sylvia Makuch</Text>
-            <a href="https://622fa5acf920c80cc6d0cade--reverent-wiles-1b601d.netlify.app/">Website</a>
+            <a href="https://622fa5acf920c80cc6d0cade--reverent-wiles-1b601d.netlify.app/">About Me</a>
         </BackGround>
     )
 };
