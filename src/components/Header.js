@@ -8,7 +8,7 @@ const H1 = styled.h1`
     text-align: center;
     margin: 0px;
     color: black;
-    margin: 40px;
+    margin: 20px;
 `;
 
 const ForkSpoonImg = styled.img`
