@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import styled from "styled-components";
 import bricks from "./../media/bricks.svg";
 import Header from "./Header";
+import Footer from "./Footer";
 import {Link} from "react-router-dom";
 
 const PageContainer = styled.div`
@@ -52,6 +53,7 @@ const SubTitle = styled.h2`
   font-style: italic;
   text-decoration-line: underline;
   text-decoration-color: antiquewhite;
+  margin: 0px;
 `;
 
 const Picture = styled.img`
