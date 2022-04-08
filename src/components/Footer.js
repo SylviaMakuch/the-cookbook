@@ -20,6 +20,7 @@ const Text = styled.div`
     font-family: 'Space Grotesk', sans-serif;
     font-size: 32px;
     font-weight: 300;
+    margin: 20px;
 `;
 
 export default function Footer() {
@@ -28,7 +29,8 @@ export default function Footer() {
             <Text style={{color: "#1f2e1a"}}> Thank you for coming to visit my Recipe Page!</Text>
             <SocialTab/>
             <Text> By: Sylvia Makuch</Text>
-            <a href="https://622fa5acf920c80cc6d0cade--reverent-wiles-1b601d.netlify.app/">About Me</a>
+            <a href="https://sylviamakuch.github.io/portfolio/">About Me</a>
+            <Text style={{fontSize: "10px"}}> Made with MealDb API and React.js</Text>
         </BackGround>
     )
 };

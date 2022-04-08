@@ -8,6 +8,7 @@ import Cards from "./Card.js";
 import { Link } from "react-router-dom";
 import Header from "./Header.js";
 import Footer from "./Footer.js";
+import swal from "sweetalert";
 
 const PageContainer = styled.div`
   display: flex;
@@ -88,13 +89,22 @@ const Title = styled.h1`
   font-family: 'Inconsolata', monospace;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  color: blue;
+  color: navy;
   font-size: 40px;
   letter-spacing: 0.8px;
   @media (max-width: 500px) {
     font-size: 25px;
     text-align: center;
   }
+`;
+
+const H1 = styled.h1`
+    font-size: 88px;
+    font-family: "Inspiration", monospace;
+    text-align: center;
+    margin: 0px;
+    color: #ff3b3b;
+    font-weight: 100;
 `;
 
 export default function Search() {
@@ -109,7 +119,8 @@ export default function Search() {
     ).then((res) => {
       if (res.data.meals === null) {
         setDataNull(true);
-        alert("No results found, please try again");
+        // alert("No results found, please try again");
+        swal("No results found, please try again");
       } else {
         setMeals(res.data.meals);
         setDataNull(false);
@@ -136,9 +147,9 @@ export default function Search() {
         </Button>
         </div>
       </Form>
-      <Title>{isDataNull ? "No Meals Found, please type in an another ingredient !! ex, chicken, beef, corn, egg..." : ""}</Title>
+      <Title>{isDataNull ? "Ingredient examples:, chicken, beef, corn, egg, cheese, chickpeas...Sorry- no Shrimp available!" : ""}</Title>
       <CardContainter>
-        {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
+        {meals.length > 0 ? meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
           return (
             <Link
               to={`/meal/${idMeal}`}
@@ -147,7 +158,7 @@ export default function Search() {
               <Cards key={index} title={strMeal} url={strMealThumb} />
             </Link>
           );
-        })}
+        }) : <H1>"Meals will appear here"</H1>} 
       </CardContainter>
       <Footer />
     </PageContainer>
