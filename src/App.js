@@ -12,7 +12,6 @@ function App() {
       <ScrollToTop />
         <Routes>
           <Route path="/" element={<Search />} />
-          {/* <Route path="catergories" element={<Categories />} /> */}
           <Route path="/meal/:mealId" element={<Meal />} />
         </Routes>
       </BrowserRouter>
