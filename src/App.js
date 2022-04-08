@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
       <ScrollToTop />
         <Routes>
-          <Route path="/the-cookbook//" element={<Search />} />
+          <Route path="/the-cookbook" element={<Search />} />
           <Route path="/meal/:mealId" element={<Meal />} />
         </Routes>
       </BrowserRouter>
