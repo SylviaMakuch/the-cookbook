@@ -41,6 +41,7 @@ const CardContainter = styled.div`
   align-content: flex-start;
   justify-content: center;
   min-height: 800px;
+  margin: 40px;
 `;
 
 const Button = styled.button`
@@ -68,10 +69,10 @@ const Form = styled.form`
   align-items: center;
   flex-direction: column;
   @media (max-width: 1700px) {
-    top: 350px;
+    top: 400px;
   }
   @media (max-width: 500px) {
-    top: 400px;
+    top: 500px;
   }
 `;
 
