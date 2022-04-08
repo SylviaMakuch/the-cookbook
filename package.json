@@ -2,7 +2,7 @@
   "homepage": "https://sylviamakuch.github.io/the-cookbook",
   "name": "the-cookbook",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
