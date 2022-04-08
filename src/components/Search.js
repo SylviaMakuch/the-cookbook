@@ -79,13 +79,13 @@ const SubTitle = styled.h2`
   font-family: 'Inconsolata', monospace;
   color: white;
   text-transform: uppercase
-  font-size: 40px;
+  font-size: 60px;
   letter-spacing: 0.8px;
 `;
 
 const Title = styled.h1`
   font-family: 'Inconsolata', monospace;
-  font-weight: 800;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   color: blue;
   font-size: 40px;
@@ -108,7 +108,7 @@ export default function Search() {
     ).then((res) => {
       if (res.data.meals === null) {
         setDataNull(true);
-        alert("No results found");
+        alert("No results found, please try again");
       } else {
         setMeals(res.data.meals);
         setDataNull(false);
@@ -135,7 +135,7 @@ export default function Search() {
         </Button>
         </div>
       </Form>
-      <Title>{isDataNull ? "No Meals Found, please type in an another ingredient" : ""}</Title>
+      <Title>{isDataNull ? "No Meals Found, please type in an another ingredient !! ex, chicken, beef, corn, egg..." : ""}</Title>
       <CardContainter>
         {meals.map(({ idMeal, strMeal, strMealThumb }, index) => {
           return (
