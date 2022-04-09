@@ -73,7 +73,7 @@ const Form = styled.form`
     top: 400px;
   }
   @media (max-width: 500px) {
-    top: 500px;
+    top: 350px;
   }
 `;
 

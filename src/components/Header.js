@@ -9,6 +9,9 @@ const H1 = styled.h1`
     margin: 0px;
     color: black;
     margin: 20px;
+    @media (max-width: 600px) {
+        font-size: 50px;
+    }
 `;
 
 const ForkSpoonImg = styled.img`

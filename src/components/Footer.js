@@ -21,12 +21,13 @@ const Text = styled.div`
     font-size: 32px;
     font-weight: 300;
     margin: 20px;
+    text-align: center;
 `;
 
 export default function Footer() {
     return (
         <BackGround >
-            <Text style={{color: "#1f2e1a"}}> Thank you for coming to visit my Recipe Page!</Text>
+            <Text> Thank you for coming to visit my Recipe Page!</Text>
             <SocialTab/>
             <Text> By: Sylvia Makuch</Text>
             <a href="https://sylviamakuch.github.io/portfolio/">About Me</a>
