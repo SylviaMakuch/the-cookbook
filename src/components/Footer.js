@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SocialTab from "./SocialTab.js";
 
-const BackGround = styled.div`
-    width: 100%;
+const BackGround = styled.div` 
     background-color: #b6dbc8;
     display: flex;
     flex-direction: column;

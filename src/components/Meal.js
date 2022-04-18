@@ -152,7 +152,7 @@ export default function Meal() {
   return (
     <>
       <Header />
-        <Link to="/"><SubTitle style={{color: "red"}}>   ← Go Back to Search</SubTitle></Link>
+        <Link to="/the-cookbook"><SubTitle style={{color: "red"}}>   ← Go Back to Search</SubTitle></Link>
     <PageContainer>
   
       <Line />

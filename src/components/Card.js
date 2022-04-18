@@ -9,11 +9,10 @@ const Cards = styled.div`
   z-index: 2;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow:  10px 10px 20px #564545,
+  box-shadow:  10px 10px 20px #000000,
              -10px -10px 20px #4b6854c7;
   &:hover {
     transform: translateY(-10px);
-    background-image: linear-gradient(to bottom, #ff000000, #000000e0);
     color: white;
   }
 `;
@@ -24,11 +23,10 @@ const Image = styled.img`
   z-index: 0;
   position: absolute;
   border-radius: 25px;
-  opacity: 0.8px;
+
 `;
 
 const Image2 = styled.img`
-  background-image: linear-gradient(to top, #ff000000, #ff000000, #ff000000, #f9e8e8eb);
   width: 350px;
   z-index: 1;
   position: relative;
@@ -46,6 +44,7 @@ const Title = styled.h2`
   letter-spacing: 0.8px;
   z-index: 2;
   background-color: black;
+  line-decoration: none;
   &:hover {
     color: red;
   }
