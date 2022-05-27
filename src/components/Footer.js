@@ -9,7 +9,7 @@ const BackGround = styled.div`
     justify-content: center;
     align-items: center;
     padding: 50px;
-    width: 100%
+    width: 100%;
     @media (max-width: 1600px){
         top: 2500px;
     }
